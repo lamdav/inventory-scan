@@ -6,5 +6,3 @@ settings = Dynaconf(
 )
 
 scans_metadata = {scan.url: scan for scan in settings.get("scans", [])}
-
-print(list(scans_metadata.keys()))

@@ -2,7 +2,7 @@ from urllib.parse import urlparse
 
 from scrapy.http import Response
 
-from inventory_scan.handler import Handler, Result
+from inventory_scan.handler.base import Handler, Result
 
 
 class AmazonHandler(Handler):
