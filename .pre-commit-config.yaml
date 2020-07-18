@@ -1,0 +1,20 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.1.0
+    hooks:
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+  - repo: https://github.com/asottile/seed-isort-config
+    rev: v2.2.0
+    hooks:
+      - id: seed-isort-config
+        args:
+          - --application-directories=src
+  - repo: https://github.com/pre-commit/mirrors-isort
+    rev: v5.1.1
+    hooks:
+      - id: isort
+  - repo: https://github.com/psf/black
+    rev: 19.10b0
+    hooks:
+      - id: black
