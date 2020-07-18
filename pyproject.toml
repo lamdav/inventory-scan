@@ -1,0 +1,55 @@
+[tool.poetry]
+name = "inventory-scan"
+version = "0.0.1"
+description = "Scan various web stores for product inventory"
+authors = ["David Lam <dav_lam@ymail.com>"]
+license = "MIT"
+
+[tool.poetry.scripts]
+inv = "inventory_scan.entry:inv"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+scrapy = "^2.2.0"
+pydantic = "^1.6.1"
+click = "^7.1.2"
+structlog = "^20.1.0"
+colorama = "^0.4.3"
+dynaconf = {extras = ["yaml"], version = "^3.0.0"}
+slackclient = "^2.7.2"
+
+[tool.poetry.dev-dependencies]
+isort = "^5.1.1"
+black = "^19.10b0"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
+
+[tool.isort]
+# https://github.com/python/black#how-black-wraps-lines
+multi_line_output=3
+include_trailing_comma=true
+force_grid_wrap=0
+use_parentheses=true
+line_length=88
+known_first_party=["inventory_scan"]
+known_third_party=["click", "dynaconf", "itemadapter", "pydantic", "scrapy", "slack", "structlog"]
+
+[tool.black]
+line-length = 88
+target-version = ["py38"]
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | \.unifyid
+  | env
+  | build
+  | dist
+)/
+'''

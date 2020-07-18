@@ -1,0 +1,33 @@
+# Suggested to copy this and create settings.local.yaml which is gitignored
+# and can be a last measure defense on accidentally publishing credentials.
+scans:
+  # Only url is required. The rest is treated as metadata and passed along
+  # Metadata is matched based on the response.url. In case of redirects
+  # such as smile.amazon, the metadata may not match and metadata will not
+  # be forwarded. As a warning, this may cause some issues with templating.
+  - name: "Nintendo Switch"
+    url: "https://www.amazon.com/Nintendo-Switch-Neon-Blue-Joy%E2%80%91/dp/B07VGRJDFY"
+    store: "Amazon"
+
+email:
+  subject: "Items are in stock!"
+  recipients:
+    - "recipient@example.com"
+  # Per Item template. It will be given:
+  # - url
+  # - price
+  # - availability
+  # - any metadata matched
+  body_template: "- {name} is available at {store} for ({price}): {url}"
+  smtp:
+    # Example of Gmail
+    host: "smtp.gmail.com"
+    port: 587
+    user: "example@gmail.com"
+    # Highly recommend using an: App Password
+    password: "password"
+
+slack:
+  token: "slack oauth app token"
+  channel: "#general"
+  message_template: "*{name}*\n :house: {store}\n :moneybag: {price}\n :paperclip: <{url}|Product Page>"
