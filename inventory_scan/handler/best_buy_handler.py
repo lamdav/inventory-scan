@@ -2,6 +2,7 @@ from typing import Optional
 from urllib.parse import urlparse
 
 import structlog
+from scrapy.http import Response
 
 from inventory_scan.handler.base import Handler, Result
 
@@ -18,7 +19,7 @@ class BestBuyHandler(Handler):
         hostname = urlparse(url).hostname
         return hostname is not None and hostname.lower() == "www.bestbuy.com"
 
-    def handle(self, response) -> Result:
+    def handle(self, response: Response) -> Result:
         price = (
             response.css("div.priceView-hero-price")
             .css(".priceView-customer-price")

@@ -92,7 +92,7 @@ _notifiers = {
     "-n",
     multiple=True,
     help="Channels to receive messages of inventory.",
-    type=click.Choice(_notifiers.keys()),
+    type=click.Choice(list(_notifiers.keys())),
     show_default=True,
     default=("console",),
 )
