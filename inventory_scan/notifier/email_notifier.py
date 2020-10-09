@@ -30,12 +30,17 @@ class Emailer(object):
         # Modification of SO: https://stackoverflow.com/questions/57715289/how-to-fix-ssl-sslerror-ssl-wrong-version-number-wrong-version-number-ssl
         context = ssl.create_default_context()
 
-        with smtplib.SMTP(host=self.host, port=self.port,) as server:
+        with smtplib.SMTP(
+            host=self.host,
+            port=self.port,
+        ) as server:
             server.starttls(context=context)
             server.login(self.user, self.password)
             message = "\n".join([f"Subject: {self.subject}", message])
             server.sendmail(
-                from_addr=self.user, to_addrs=self.recipients, msg=message,
+                from_addr=self.user,
+                to_addrs=self.recipients,
+                msg=message,
             )
 
 
@@ -66,6 +71,9 @@ class EmailNotifier(Notifier):
             metadata = {k: v for k, v in metadata.items() if k != "url"}
             self.body.append(
                 self.body_template.format(
-                    url=url, price=price, availability=availability, **metadata,
+                    url=url,
+                    price=price,
+                    availability=availability,
+                    **metadata,
                 )
             )

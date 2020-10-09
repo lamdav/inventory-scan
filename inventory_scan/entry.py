@@ -60,7 +60,10 @@ def inv(context: click.Context, debug: bool):
         cache_logger_on_first_use=True,
     )
 
-    context.obj = Context(debug=debug, logger=structlog.get_logger(),)
+    context.obj = Context(
+        debug=debug,
+        logger=structlog.get_logger(),
+    )
 
 
 _notifiers = {
@@ -79,7 +82,9 @@ _notifiers = {
         ),
     ),
     "slack": SlackNotifier(
-        client=WebClient(token=settings.get("slack.token"),),
+        client=WebClient(
+            token=settings.get("slack.token"),
+        ),
         channel=settings.get("slack.channel"),
         message_template=settings.get("slack.message_template"),
     ),
