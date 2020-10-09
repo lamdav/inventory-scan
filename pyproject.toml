@@ -47,7 +47,6 @@ exclude = '''
   | \.mypy_cache
   | \.tox
   | \.venv
-  | \.unifyid
   | env
   | build
   | dist
