@@ -16,7 +16,7 @@ click = "^7.1.2"
 colorama = "^0.4.3"
 dynaconf = { extras = ["yaml"], version = "^3.0.0" }
 pydantic = "^1.6.1"
-scrapy = "^2.3.0"
+scrapy = "^2.6.0"
 slackclient = "^2.9.1"
 structlog = "^20.1.0"
 
